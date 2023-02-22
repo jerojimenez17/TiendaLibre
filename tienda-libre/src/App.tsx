@@ -1,24 +1,72 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import SearchAppBar from "./presentation/components/AppBar/SearchAppBar";
+import { useEffect, useState } from "react";
+import LeftDrawer from "./presentation/components/LeftDrawer";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import Products from "./presentation/pages/Products";
+import CartProvider from "./presentation/components/cart/context/CartProvider";
+// import Counts from "./Pages/Counts";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { esES } from "@mui/x-data-grid";
+import { blue, pink } from "@mui/material/colors";
+import { Paper } from "@mui/material";
 
 function App() {
+  const [openDrawer, setOpenDrawer] = useState(false);
+  const [page, setPage] = useState(window.location.href.split("/")[3]);
+  const [searchText, setSearchText] = useState("");
+  const [openCart, setOpenCart] = useState(false);
+  const [themeMode, setThemeMode] = useState(false);
+
+  const handleTheme = () => {
+    setThemeMode(!themeMode);
+  };
+  const handleOpenDrawer = () => {
+    setOpenDrawer(!openDrawer);
+  };
+
+  // const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
+  const theme = createTheme(
+    {
+      palette: {
+        mode: themeMode ? "dark" : "light",
+        primary: { main: blue[400] },
+
+        secondary: { main: pink[400] },
+      },
+    },
+    esES // x-data-grid translations
+  );
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <ThemeProvider theme={theme}>
+        <Paper>
+          <CartProvider>
+            <SearchAppBar
+              handlePageChange={setPage}
+              openCart={openCart}
+              setOpenCart={setOpenCart}
+              openDrawer={handleOpenDrawer}
+              handleSearchText={setSearchText}
+              searchText={searchText}
+              themeMode={themeMode}
+              handleTheme={handleTheme}
+            />
+            <LeftDrawer open={openDrawer} onClose={handleOpenDrawer} />
+            <BrowserRouter>
+              <Routes>
+                <Route
+                  path="/products"
+                  element={<Products openCart={openCart} />}
+                />
+                {/* <Route path="/counts" element={<Counts />} /> */}
+                <Route path="*" element={<Navigate to="/products" />} />
+              </Routes>
+            </BrowserRouter>
+          </CartProvider>
+        </Paper>
+      </ThemeProvider>
     </div>
   );
 }
