@@ -164,7 +164,18 @@ const PrinteableProducts = ({
                 color="primary"
                 mr={1}
               >
-                Total con Descuento: ${cartState.totalWithDiscount.toFixed()}
+                Total con Descuento: $  {(
+                  cartState.products.reduce(
+                    (acc, cur) => acc + cur.price * cur.amount,
+                    0
+                  ) -
+                  cartState.products.reduce(
+                    (acc, cur) => acc + cur.price * cur.amount,
+                    0
+                  ) *
+                    discountState *
+                    0.01
+                ).toFixed()}
               </Typography>
             )}
           </Box>
