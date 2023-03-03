@@ -25,7 +25,7 @@ app.get("/api/productos/tienda-libre", (req, res) => {
     "./excel-files/tienda-libre.xlsx"
   );
 
-  res.send(products.map((product) => ({ ...product, price: product.price })));
+  res.send(products);
 });
 
 // start server
