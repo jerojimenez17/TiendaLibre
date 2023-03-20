@@ -20,14 +20,14 @@ const ProductGrid = ({ products, openCart }: propsGrid) => {
       field: "description",
       headerName: "Descripcion",
       headerClassName: "header-grid",
-      width: openCart ? 350 : 650,
+      width: openCart ? 300 : 650,
       editable: true,
     },
     {
       field: "talle",
       headerName: "Talles",
       headerClassName: "header-grid",
-      width: openCart ? 100 : 240,
+      width: openCart ? 50 : 240,
       editable: true,
     },
     {
@@ -35,7 +35,7 @@ const ProductGrid = ({ products, openCart }: propsGrid) => {
       headerName: "Cantidad",
       headerClassName: "header-grid",
       type: "number",
-      width: 90,
+      width: openCart? 0:90,
       editable: true,
     },
     {
