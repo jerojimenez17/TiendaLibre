@@ -2,7 +2,7 @@ import axios from "axios";
 
 const fetchProducts = (route: string) => {
   return axios
-    .get("https://tiendalibre-backend.onrender.com/api/productos/tienda-libre", {
+    .get("http://localhost:3003/api/productos/tienda-libre", {
       headers: {
         "Content-Type": "application/json",
       },
