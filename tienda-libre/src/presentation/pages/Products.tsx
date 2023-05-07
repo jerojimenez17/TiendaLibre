@@ -71,6 +71,16 @@ const Products = ({ openCart }: ProductProps) => {
   const handleSaveProducts = async () => {
     saveProducts(productsListName, allProducts);
   };
+      const handleClose = (
+    event: React.SyntheticEvent | Event,
+    reason?: string
+  ) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setError(false);
+  };
   return (
     <>
  
