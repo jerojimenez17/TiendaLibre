@@ -1,12 +1,15 @@
 import { Refresh } from "@mui/icons-material";
 import {
+  Alert,
   Box,
+  CircularProgress,
   FormControl,
   Grid,
   IconButton,
   InputLabel,
   MenuItem,
   Select,
+  Snackbar,
   TextField,
   Tooltip,
 } from "@mui/material";
@@ -26,10 +29,23 @@ const Products = ({ openCart }: ProductProps) => {
   const [products, setProducts] = useState<Product[]>([]);
   const [productsListName, setProductListName] = useState<string>("taladro");
   const [search, setSearch] = useState<string>("");
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<boolean>(false);
+
   useEffect(() => {
-    fetchProducts(productsListName).then((productsWS: Product[]) =>
-      setAllProducts(productsWS)
-    );
+    setLoading(!loading);
+    fetchProducts(productsListName)
+      .then((productsWS: Product[]) => {
+        setAllProducts(productsWS);
+        setLoading(false);
+        if (productsWS.length == 0) {
+          setError(true);
+          setLoading(false);
+        }
+      })
+      .catch((error) => {
+        setError(true);
+      });
   }, []);
 
   // const loadMore = () => {
@@ -53,6 +69,17 @@ const Products = ({ openCart }: ProductProps) => {
   };
   const handleSaveProducts = async () => {
     saveProducts(productsListName, allProducts);
+  };
+
+  const handleClose = (
+    event: React.SyntheticEvent | Event,
+    reason?: string
+  ) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setError(false);
   };
   return (
     <>
@@ -116,6 +143,22 @@ const Products = ({ openCart }: ProductProps) => {
               );
             })}
           />
+          {loading && (
+            <CircularProgress
+              sx={{ position: "absolute", top: "50%", left: "50%" }}
+              color="secondary"
+            />
+          )}
+          {error && (
+            <Snackbar
+              open={error}
+              autoHideDuration={6000}
+              onClose={handleClose}
+              message="Error al cargar Productos"
+            >
+              <Alert severity="error">Error al cargar Productos</Alert>
+            </Snackbar>
+          )}
         </Grid>
         <Grid
           item

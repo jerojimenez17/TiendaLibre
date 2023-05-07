@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@afipsdk/afip.js": "^0.7.5",
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
     "@mui/icons-material": "^5.11.9",
@@ -15,7 +16,9 @@
     "@types/node": "^16.18.12",
     "@types/react": "^18.0.28",
     "@types/react-dom": "^18.0.10",
+    "afipjs": "^1.1.5",
     "axios": "^0.27.2",
+    "dotenv": "^16.0.3",
     "firebase": "^9.13.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
