@@ -28,7 +28,7 @@ module.exports = function readExcelFile(initRows, columns, filePath) {
         sheet[
           xslx.utils.encode_cell({
             r: rowNum,
-            c: columns[3] != -1 ? columns[3] : columns[0],
+            c: columns[3],
           })
         ];
       const priceCell =

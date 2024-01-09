@@ -21,11 +21,11 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.get("/api/productos/tienda-libre", (req, res) => {
   const products = readExcelFile(
     1,
-    [0, 2, 4, 1, 5],
+    [0, 2, 3, 1, 5],
     "./excel-files/tienda-libre.xlsx"
   );
 
-  res.send(products.map((product) => ({ ...product, price: product.price })));
+  res.send(products);
 });
 
 // start server
