@@ -1,15 +1,22 @@
 const xslx = require("xlsx");
 
-module.exports = function readExcelFile(initRows, columns, filePath) {
+module.exports = function readExcelFile(
+  initRows,
+  columns,
+  filePath,
+  sheetNumber
+) {
   try {
     let obj = [];
     const workbook = xslx.readFile("" + filePath);
 
-    const sheet = workbook.Sheets[workbook.SheetNames[4]];
+    const sheet = workbook.Sheets[workbook.SheetNames[sheetNumber]];
     const products = [];
     let product = {};
     let i = 0;
-    var range = xslx.utils.decode_range(sheet["!ref"]);
+
+    const range = xslx.utils.decode_range(sheet["!ref"]);
+
     // iterate over rows
     for (let rowNum = initRows; rowNum <= range.e.r; rowNum++) {
       // get cell[r,c] value where r = row, c = column

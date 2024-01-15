@@ -10,6 +10,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { esES } from "@mui/x-data-grid";
 import { blue, pink } from "@mui/material/colors";
 import { Paper } from "@mui/material";
+import Counts from "./presentation/pages/Counts";
 
 function App() {
   const [openDrawer, setOpenDrawer] = useState(false);
@@ -60,7 +61,7 @@ function App() {
                   path="/products"
                   element={<Products openCart={openCart} />}
                 />
-                {/* <Route path="/counts" element={<Counts />} /> */}
+                <Route path="/counts" element={<Counts />} />
                 <Route path="*" element={<Navigate to="/products" />} />
               </Routes>
             </BrowserRouter>

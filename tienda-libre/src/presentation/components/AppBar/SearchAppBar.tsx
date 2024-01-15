@@ -88,7 +88,7 @@ export default function SearchAppBar({
           >
             <MenuIcon />
           </IconButton>
-          {/* <Box
+          <Box
             className="navigation"
             sx={{ display: { xs: "none", lg: "flex" } }}
             justifyContent="space-between"
@@ -96,21 +96,21 @@ export default function SearchAppBar({
           >
             <Box
               display="flex"
-              borderBottom={page === "counts" ? "none" : "3px solid blue"}
+              // borderBottom={page === "counts" ? "none" : "3px solid blue"}
               alignContent="center"
               alignItems="center"
             >
               <Link
                 href="products"
                 underline="none"
-                color={page === "products" ? "primary" : "inherit"}
+                // color={page === "products" ? "primary" : "inherit"}
                 onClick={() => {
                   handlePageChange("products");
                 }}
               >
                 <Typography
                   variant="h6"
-                  color={page === "products" ? "primary" : "inherit"}
+                  // color={page === "products" ? "primary" : "inherit"}
                 >
                   Productos
                 </Typography>
@@ -118,12 +118,12 @@ export default function SearchAppBar({
             </Box>
             <Box
               display="flex"
-              borderBottom={page === "products" ? "none" : "3px solid blue"}
+              // borderBottom={page === "products" ? "none" : "3px solid blue"}
               alignContent="center"
               textAlign="center"
             >
               <Link
-                color={page === "counts" ? "primary" : "inherit"}
+                // color={page === "counts" ? "primary" : "inherit"}
                 href="counts"
                 underline="none"
                 onClick={() => {
@@ -133,7 +133,7 @@ export default function SearchAppBar({
                 <Typography variant="h6">Cuentas</Typography>
               </Link>
             </Box>
-          </Box> */}
+          </Box>
           <Box
             flexDirection="row"
             justifyContent="center"
