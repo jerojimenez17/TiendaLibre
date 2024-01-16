@@ -22,10 +22,21 @@ app.get("/api/productos/tienda-libre", (req, res) => {
   const products = readExcelFile(
     1,
     [0, 2, 3, 1, 5],
-    "./excel-files/tienda-libre.xlsx"
+    "./excel-files/tienda-libre.xlsx",
+    4
   );
 
   res.send(products);
+});
+app.get("/api/counts", (req, res) => {
+  const counts = readExcelFile(
+    0,
+    [0, 1, -1, -1, 2],
+    "./excel-files/ficheroTiendaLibre.xlsx",
+    0
+  );
+
+  res.send(counts);
 });
 
 // start server

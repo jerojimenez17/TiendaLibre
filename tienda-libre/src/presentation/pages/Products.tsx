@@ -29,7 +29,6 @@ const Products = ({ openCart }: ProductProps) => {
   const [products, setProducts] = useState<Product[]>([]);
   const [productsListName, setProductListName] = useState<string>("taladro");
   const [search, setSearch] = useState<string>("");
-    
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<boolean>(false);
     
@@ -71,7 +70,8 @@ const Products = ({ openCart }: ProductProps) => {
   const handleSaveProducts = async () => {
     saveProducts(productsListName, allProducts);
   };
-      const handleClose = (
+
+  const handleClose = (
     event: React.SyntheticEvent | Event,
     reason?: string
   ) => {
