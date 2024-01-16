@@ -13,7 +13,7 @@ const CountRow = ({ count }: props) => {
             <p>
               {count.price
                 ? new Date(
-                    (count.price - (25567 + 2)) * 86400 * 1000
+                    (count.price - 25568) * 86400 * 1000
                   ).toLocaleDateString()
                 : "-"}
             </p>

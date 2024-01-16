@@ -18,6 +18,7 @@
     "@types/react-dom": "^18.0.10",
     "afipjs": "^1.1.5",
     "axios": "^0.27.2",
+    "date-fns": "^3.2.0",
     "dotenv": "^16.0.3",
     "firebase": "^9.13.0",
     "react": "^18.2.0",
