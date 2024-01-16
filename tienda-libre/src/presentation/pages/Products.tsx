@@ -31,7 +31,7 @@ const Products = ({ openCart }: ProductProps) => {
   const [search, setSearch] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<boolean>(false);
-
+    
   useEffect(() => {
     setLoading(!loading);
     fetchProducts(productsListName)
@@ -83,6 +83,7 @@ const Products = ({ openCart }: ProductProps) => {
   };
   return (
     <>
+ 
       <Box
         display="flex"
         justifyContent="flex-start"
