@@ -2,7 +2,7 @@ import axios from "axios";
 
 const fetchCounts = () => {
   return axios
-    .get("http://localhost:3003/api/counts", {
+    .get("https://tiendalibre-backend.onrender.com/api/counts", {
       headers: {
         "Content-Type": "application/json",
       },

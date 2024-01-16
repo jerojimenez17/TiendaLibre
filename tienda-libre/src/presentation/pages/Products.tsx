@@ -31,14 +31,14 @@ const Products = ({ openCart }: ProductProps) => {
   const [search, setSearch] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<boolean>(false);
-    
+
   useEffect(() => {
     setLoading(!loading);
     fetchProducts(productsListName)
       .then((productsWS: Product[]) => {
         setAllProducts(productsWS);
         setLoading(false);
-        if (productsWS.length == 0) {
+        if (productsWS.length === 0) {
           setError(true);
           setLoading(false);
         }
@@ -83,7 +83,6 @@ const Products = ({ openCart }: ProductProps) => {
   };
   return (
     <>
- 
       <Box
         display="flex"
         justifyContent="flex-start"

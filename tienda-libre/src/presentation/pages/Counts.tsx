@@ -5,7 +5,7 @@ import CountRow from "../components/countRow";
 import SearchInput from "../components/SearchInput";
 
 const Counts = () => {
-  const [counts, setCounts] = useState<Product[]>();
+  const [counts, setCounts] = useState<Product[]>([]);
   const [searchName, setSearchName] = useState("");
   const [errorLoad, setErrorLoad] = useState(false);
   useEffect(() => {
@@ -23,8 +23,9 @@ const Counts = () => {
       <SearchInput handleChange={(value) => setSearchName(value)} />
       <div>
         {counts
-          ?.filter((count) => {
+          .filter((count) => {
             return count.cod
+              ?.toString()
               .toLocaleLowerCase()
               .includes(searchName.toLocaleLowerCase());
           })
@@ -35,7 +36,11 @@ const Counts = () => {
           ))}
         <div className="text-lg font-semibold m-2 p-2">
           Total: $
-          {counts?.reduce((acc, count) => acc + Number(count.description), 0)}
+          {counts?.reduce(
+            (acc, count) =>
+              count.id !== "f345" ? acc + Number(count.description) : acc,
+            0
+          )}
         </div>
       </div>
     </div>
